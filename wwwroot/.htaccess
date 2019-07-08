@@ -1,0 +1,10 @@
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RedirectMatch 404 ^/photos/?$
+RedirectMatch 404 ^/posts/?$
+RedirectMatch 404 ^/posts/.*\.(md|png|jpg|gif)$
+RedirectMatch 404 ^/lib/?$
+RedirectMatch 404 ^/lib/.*\.(php)$
+RedirectMatch 404 machinery.php
+RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+RewriteRule ^([^/d]+)/?$ blog.php?post=$1 [QSA]
